@@ -1,0 +1,128 @@
+grl mergedModel_Ex3_MS11_MS12 {
+actor A3A321 {
+name = "Seminar Organizer";
+task A3T2A3T292 {
+name = "Make a phone call";
+}
+task A3T1A3T190 {
+name = "Send request to admin";
+decompositionType = xor;
+}
+goal A3G2A3G29 {
+name = "Manage speakers";
+}
+task A3T6A3T655 {
+name = "Encourage colleagues to register in the seminar";
+}
+goal A3G1A3G164 {
+name = "Create seminars";
+decompositionType = xor;
+}
+goal A3G4A3G418 {
+name = "Have many attendees in the managed seminar";
+decompositionType = or;
+}
+goal A3G3A3G353 {
+name = "Promote the department";
+importance = 100;
+}
+task A3T5A3T572 {
+name = "Add speakers from the department";
+}
+task A3T3 {
+name = "Send an email";
+}
+task A3T4 {
+name = "Add seminar directly";
+}
+A2A218.A2T2A2T250 contributesTo A3G2A3G29 {25;};
+A3G1A3G164 decomposedBy A3T1A3T190;
+A3T1A3T190 decomposedBy A3T2A3T292;
+A3T6A3T655 contributesTo A3G4A3G418 {25;};
+A4A478.A4T1A4T160 contributesTo A3G4A3G418 {25;};
+A2A218.A2T3 contributesTo A3G4A3G418 {25;};
+A3T5A3T572 contributesTo A3G2A3G29 {25;};
+A3G1A3G164 decomposedBy A3T4;
+A3T1A3T190 decomposedBy A3T3;
+A3G4A3G418 decomposedBy A2A218.A2T30;
+A3T5A3T572 contributesTo A3G3A3G353 {75;};
+}
+actor A2A218 {
+name = "Admin";
+softGoal A2S3A2S326 {
+name = "Diversity of the delivered seminars content";
+}
+task A2T1A2T174 {
+name = "Add Seminar";
+}
+task A2T2A2T250 {
+name = "Add speakers from outside the managing department";
+}
+task A2T3 {
+name = "Post an advertisement on social media about the seminar";
+}
+task A2T30 {
+name = "Advertise the session via a social media ad.";
+}
+softGoal A2S1 {
+name = "Minimize adminstration duties";
+importance = 50;
+}
+softGoal A2S2 {
+name = "Low cost";
+importance = 100;
+}
+A2T2A2T250 contributesTo A2S3A2S326 {75;};
+A2T1A2T174 dependsOn R1R180;
+A3A321.A3T5A3T572 contributesTo A2S3A2S326 {hurt;};
+}
+actor A4A478 {
+name = "Attendees";
+task A4T1A4T160 {
+name = "Register in the seminar";
+}
+softGoal A4S1A4S19 {
+name = "Easy to use web system";
+importance = 100;
+}
+goal A4G1 {
+name = "Get reminders before the seminar starts";
+importance = 100;
+}
+goal A4G12 {
+name = "Before the session starts , send out reminders.";
+importance = 100;
+}
+A1A140.A1G1A1G188 contributesTo A4T1A4T160 {25;};
+}
+actor A1A140 {
+name = "Seminar Management System";
+goal A1G1A1G188 {
+name = "Contain all seminars";
+}
+goal A1G3A1G337 {
+name = "Manage attendees";
+}
+goal A1G2A1G276 {
+name = "Manage seminars";
+decompositionType = or;
+}
+A1G2A1G276 decomposedBy A2A218.A2T1A2T174;
+A1G2A1G276 decomposedBy A3A321.A3G1A3G164;
+}
+actor A5A549 {
+name = "Speaker";
+goal A5G1A5G155 {
+name = "Added to a seminar of same area of interest";
+}
+softGoal A5S1A5S176 {
+name = "Prepare presentation faster";
+importance = 100;
+}
+A5G1A5G155 contributesTo A5S1A5S176 {100;};
+}
+resource R1R180 {
+name = "Seminar Request";
+}
+R1R180 dependsOn A3A321.A3T1A3T190;
+}
