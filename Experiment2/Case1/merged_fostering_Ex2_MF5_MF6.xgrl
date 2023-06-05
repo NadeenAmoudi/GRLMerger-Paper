@@ -1,0 +1,106 @@
+grl mergedModel_Ex2_MF5_MF6 {
+actor A4A494 {
+name = "Professor";
+softGoal S1S135 {
+name = "Rich courses syllabi designed";
+}
+task T13T1397 {
+name = "Consulting";
+}
+task T14T1437 {
+name = "Contributing to industrial projects";
+}
+goal G5G579 {
+name = "Enhanced Industry-University collaboration";
+decompositionType = or;
+}
+A3A321.T12T1212 contributesTo S1S135 {75;};
+G5G579 decomposedBy T13T1397;
+G5G579 decomposedBy T14T1437;
+G5G579 decomposedBy A3A321.T10T1050;
+}
+actor A1A191 {
+name = "University";
+goal G1G198 {
+name = "University-Alumni relationship is fostered";
+decompositionType = and;
+}
+G1G198 decomposedBy A2A296.G2G27;
+G1G198 decomposedBy A3A321.G3SG3;
+G1G198 decomposedBy A4A494.G5G579;
+}
+actor A2A296 {
+name = "Alumni Department";
+goal G2G27 {
+name = "Serving alumni through University commitment";
+}
+task T5T580 {
+name = "Provide discounts on short courses registration fees";
+}
+task T1T146 {
+name = "Organize networking events";
+}
+task T4T449 {
+name = "Provide free admissions to seminars";
+}
+task T6 {
+name = "Use SMS for all communications";
+}
+task T2 {
+name = "Provide access to the university learning facilities";
+}
+task T3 {
+name = "Share alumni information with potential faculties";
+}
+T1T146 contributesTo G2G27 {25;};
+T4T449 contributesTo G2G27 {25;};
+T5T580 contributesTo G2G27 {50;};
+T6 contributesTo G2G27 {hurt;};
+T2 contributesTo G2G27 {25;};
+T3 contributesTo G2G27 {hurt;};
+}
+actor A3A321 {
+name = "Alumnus";
+task T12T1212 {
+name = "Providing feedback on courses and syllabi";
+}
+indicator I1I174 {
+name = "Average volunteering time (in minutes)";
+}
+goal G3SG3 {
+name = "Serving university through alumni commitment";
+}
+task T9T962 {
+name = "Helping with student placement through internship offerings";
+}
+task T10T1050 {
+name = "Facilitating research collaboration";
+}
+task T7T761 {
+name = "Volunteering";
+}
+task T8T844 {
+name = "Mentoring current students";
+}
+task T11 {
+name = "Donating to the university";
+}
+belief B1 {
+name = "This is a belief";
+description = "Alumnus' contribution has the most effect on the program";
+}
+T7T761 contributesTo G3SG3 {17;};
+T8T844 contributesTo G3SG3 {17;};
+T9T962 contributesTo G3SG3 {17;};
+T10T1050 contributesTo G3SG3 {17;};
+T12T1212 contributesTo G3SG3 {17;};
+I1I174 contributesTo T7T761 {100;};
+T11 contributesTo G3SG3 {17;};
+T7T761 dependsOn A2A296.T6;
+T10T1050 dependsOn R1R136;
+}
+resource R1R136 {
+name = "Alumni Data Repository";
+}
+R1R136 dependsOn A2A296.T3;
+}
