@@ -1,0 +1,106 @@
+grl mergedModel_Ex3_MF11_MF12 {
+actor A1A133 {
+name = "University";
+goal G1G110 {
+name = "University-Alumni relationship is fostered";
+decompositionType = and;
+}
+G1G110 decomposedBy A2A297.G2G214;
+G1G110 decomposedBy A3A380.G3G358;
+G1G110 decomposedBy A4A458.G5G559;
+}
+actor A2A297 {
+name = "Alumni Department";
+task T6T646 {
+name = "Use SMS for all communications";
+}
+goal G2G214 {
+name = "Serving alumni through University commitment";
+}
+task T4T430 {
+name = "Provide free admissions to seminars";
+}
+task T3T353 {
+name = "Share alumni information with potential faculties";
+}
+task T5T548 {
+name = "Provide discounts on short courses registration fees";
+}
+task T1 {
+name = "Organize networking events";
+}
+task T2 {
+name = "Provide access to the university learning facilities";
+}
+T3T353 contributesTo G2G214 {hurt;};
+T4T430 contributesTo G2G214 {25;};
+T5T548 contributesTo G2G214 {50;};
+T6T646 contributesTo G2G214 {hurt;};
+T1 contributesTo G2G214 {25;};
+T2 contributesTo G2G214 {25;};
+}
+actor A3A380 {
+name = "Alumnus";
+task T11T1194 {
+name = "Donating to the university";
+}
+goal G3G358 {
+name = "Serving university through alumni commitment";
+}
+task T9T913 {
+name = "Helping with student placement through internship offerings";
+}
+task T7T721 {
+name = "Volunteering";
+}
+task T8T848 {
+name = "Mentoring current students";
+}
+task T12T1267 {
+name = "Providing feedback on courses and syllabi";
+}
+task T10T1040 {
+name = "Facilitating research collaboration";
+}
+indicator I1I151 {
+name = "Average volunteering time (in minutes)";
+}
+belief B1 {
+name = "Alumnus' contribution has the most effect on the program";
+description = "Alumnus' contribution has the most effect on the program";
+}
+T8T848 contributesTo G3G358 {17;};
+T9T913 contributesTo G3G358 {17;};
+T10T1040 contributesTo G3G358 {17;};
+T11T1194 contributesTo G3G358 {17;};
+T12T1267 contributesTo G3G358 {17;};
+T7T721 dependsOn A2A297.T6T646;
+I1I151 contributesTo T7T721 {100;};
+T7T721 contributesTo G3G358 {17;};
+T10T1040 dependsOn R1;
+}
+actor A4A458 {
+name = "Professor";
+softGoal S1S191 {
+name = "Rich courses syllabi designed";
+}
+task T13T1398 {
+name = "Consulting";
+}
+task T14T1460 {
+name = "Contributing to industrial projects";
+}
+goal G5G559 {
+name = "Enhanced Industry-University collaboration";
+decompositionType = or;
+}
+A3A380.T12T1267 contributesTo S1S191 {75;};
+G5G559 decomposedBy T13T1398;
+G5G559 decomposedBy T14T1460;
+G5G559 decomposedBy A3A380.T10T1040;
+}
+resource R1 {
+name = "Alumni Data Repository";
+}
+R1 dependsOn A2A297.T3T353;
+}
