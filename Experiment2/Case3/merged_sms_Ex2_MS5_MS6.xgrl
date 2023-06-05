@@ -1,0 +1,119 @@
+grl mergedModel_Ex2_MS5_MS6 {
+actor A2A221 {
+name = "Admin";
+softGoal A2S3A2S352 {
+name = "Diversity of the delivered seminars content";
+}
+task A2T2A2T251 {
+name = "Add speakers from outside the managing department";
+}
+task A2T3A2T357 {
+name = "Post an advertisement on social media about the seminar";
+}
+task A2T1A2T195 {
+name = "Add Seminar";
+}
+softGoal A2S1 {
+name = "Minimize adminstration duties";
+importance = 50;
+}
+softGoal A2S2 {
+name = "Low cost";
+importance = 100;
+}
+A2T2A2T251 contributesTo A2S3A2S352 {75;};
+A2T1A2T195 dependsOn R1R122;
+A3A347.A3T5A3T529 contributesTo A2S3A2S352 {hurt;};
+}
+actor A3A347 {
+name = "Seminar Organizer";
+goal A3G1A3G118 {
+name = "Create seminars";
+decompositionType = xor;
+}
+goal A3G3A3G382 {
+name = "Promote the department";
+importance = 100;
+}
+task A3T1A3T161 {
+name = "Send request to admin";
+decompositionType = xor;
+}
+task A3T5A3T529 {
+name = "Add speakers from the department";
+}
+task A3T4A3T421 {
+name = "Add seminar directly";
+}
+goal A3G4A3G473 {
+name = "Have many attendees in the managed seminar";
+}
+task A3T6 {
+name = "Encourage colleagues to register in the seminar";
+}
+goal A3G2 {
+name = "Manage speakers";
+}
+task A3T2 {
+name = "Make a phone call";
+}
+task A3T3 {
+name = "Send an email";
+}
+A3G1A3G118 decomposedBy A3T1A3T161;
+A3G1A3G118 decomposedBy A3T4A3T421;
+A3T5A3T529 contributesTo A3G3A3G382 {75;};
+A2A221.A2T3A2T357 contributesTo A3G4A3G473 {25;};
+A3T6 contributesTo A3G4A3G473 {25;};
+A2A221.A2T2A2T251 contributesTo A3G2 {25;};
+A3T1A3T161 decomposedBy A3T2;
+A3T1A3T161 decomposedBy A3T3;
+A3T5A3T529 contributesTo A3G2 {25;};
+A4.A4T1 contributesTo A3G4A3G473 {25;};
+}
+actor A1A17 {
+name = "Seminar Management System";
+goal A1G1A1G129 {
+name = "Contain all seminars";
+}
+goal A1G2A1G27 {
+name = "Manage seminars";
+decompositionType = or;
+}
+goal A1G3A1G389 {
+name = "Manage attendees";
+}
+A1G2A1G27 decomposedBy A2A221.A2T1A2T195;
+A1G2A1G27 decomposedBy A3A347.A3G1A3G118;
+}
+actor A5A524 {
+name = "Speaker";
+goal A5G1A5G169 {
+name = "Added to a seminar of same area of interest";
+}
+softGoal A5S1A5S185 {
+name = "Prepare presentation faster";
+importance = 100;
+}
+A5G1A5G169 contributesTo A5S1A5S185 {100;};
+}
+actor A4 {
+name = "Attendees";
+goal A4G1 {
+name = "Get reminders before the seminar starts";
+importance = 100;
+}
+softGoal A4S1 {
+name = "Easy to use web system";
+importance = 100;
+}
+task A4T1 {
+name = "Register in the seminar";
+}
+A1A17.A1G1A1G129 contributesTo A4T1 {25;};
+}
+resource R1R122 {
+name = "Seminar Request";
+}
+R1R122 dependsOn A3A347.A3T1A3T161;
+}
