@@ -1,0 +1,119 @@
+grl mergedModel {
+actor A4A455 {
+name = "Professor";
+task T14T1444 {
+name = "Contributing to industrial projects";
+}
+goal G5G516 {
+name = "Enhanced Industry-University collaboration";
+decompositionType = or;
+}
+task T13 {
+name = "Consulting";
+}
+softGoal S1 {
+name = "Rich courses syllabi designed";
+}
+task T1378 {
+name = "Advising";
+}
+G5G516 decomposedBy T13;
+G5G516 decomposedBy T14T1444;
+G5G516 decomposedBy A3A349.T10T1070;
+A3A349.T12T1220 contributesTo S1 {75;};
+G5G516 decomposedBy T1378;
+}
+actor A1A127 {
+name = "University";
+goal G1G197 {
+name = "University-Alumni relationship is fostered";
+decompositionType = and;
+}
+G1G197 decomposedBy A2A274.G2G280;
+G1G197 decomposedBy A3A349.G3G336;
+G1G197 decomposedBy A4A455.G5G516;
+}
+actor A2A274 {
+name = "Alumni Department";
+goal G2G280 {
+name = "Serving alumni through University commitment";
+}
+task T2T211 {
+name = "Provide access to the university learning facilities";
+}
+task T4T499 {
+name = "Provide free admissions to seminars";
+}
+task T3T334 {
+name = "Share alumni information with potential faculties";
+}
+task T5 {
+name = "Provide discounts on short courses registration fees";
+}
+task T6 {
+name = "Use SMS for all communications";
+}
+task T1 {
+name = "Organize networking events";
+}
+task T646 {
+name = "Use Text message for all conversations";
+}
+T2T211 contributesTo G2G280 {25;};
+T3T334 contributesTo G2G280 {hurt;};
+T4T499 contributesTo G2G280 {25;};
+T5 contributesTo G2G280 {50;};
+T6 contributesTo G2G280 {hurt;};
+T1 contributesTo G2G280 {25;};
+T646 contributesTo G2G280 {hurt;};
+}
+actor A3A349 {
+name = "Alumnus";
+task T7T761 {
+name = "Volunteering";
+}
+task T9T991 {
+name = "Helping with student placement through internship offerings";
+}
+task T10T1070 {
+name = "Facilitating research collaboration";
+}
+task T12T1220 {
+name = "Providing feedback on courses and syllabi";
+}
+task T11T119 {
+name = "Donating to the university";
+}
+goal G3G336 {
+name = "Serving university through alumni commitment";
+}
+task T8 {
+name = "Mentoring current students";
+}
+indicator I1 {
+name = "Average volunteering time (in minutes)";
+}
+belief B1 {
+name = "Alumnus' contribution has the most effect on the program";
+description = "Alumnus' contribution has the most effect on the program";
+}
+task T871 {
+name = "guiding present pupils";
+}
+T7T761 contributesTo G3G336 {17;};
+T9T991 contributesTo G3G336 {17;};
+T11T119 contributesTo G3G336 {17;};
+T12T1220 contributesTo G3G336 {17;};
+T8 contributesTo G3G336 {17;};
+T7T761 dependsOn A2A274.T6;
+I1 contributesTo T7T761 {100;};
+T871 contributesTo G3G336 {17;};
+T10T1070 contributesTo G3G336 {17;};
+T7T761 dependsOn A2A274.T646;
+T10T1070 dependsOn R1;
+}
+resource R1 {
+name = "Alumni Data Repository";
+}
+R1 dependsOn A2A274.T3T334;
+}
