@@ -1,0 +1,135 @@
+grl mergedModel_Ex3_MS9_MS10 {
+actor A3A35 {
+name = "Seminar Organizer";
+goal A3G1A3T8 {
+name = "Create seminars";
+decompositionType = xor;
+}
+task A3T2A3T267 {
+name = "Make a phone call";
+}
+task A3T5A3T589 {
+name = "Add speakers from the department";
+}
+task A3T4A3T457 {
+name = "Add seminar directly";
+}
+goal A3G4A3G481 {
+name = "Have many attendees in the managed seminar";
+}
+task A3T6A3T646 {
+name = "Encourage colleagues to register in the seminar";
+}
+goal A3G2A3T7 {
+name = "Manage speakers";
+}
+task A3T3A3T359 {
+name = "Send an email";
+}
+goal A3G3 {
+name = "Promote the department";
+importance = 100;
+}
+task A3T1 {
+name = "Send request to admin";
+decompositionType = xor;
+}
+goal A3G354 {
+name = "Strengthen the unit";
+importance = 100;
+}
+task A3T140 {
+name = "Send an admin inquiry.";
+decompositionType = xor;
+}
+A3G1A3T8 decomposedBy A3T4A3T457;
+A3T6A3T646 contributesTo A3G4A3G481 {25;};
+A3T5A3T589 contributesTo A3G2A3T7 {25;};
+A2A214.A2T2A2T292 contributesTo A3G2A3T7 {25;};
+A3G1A3T8 decomposedBy A3T1;
+A3T1 decomposedBy A3T2A3T267;
+A3T1 decomposedBy A3T3A3T359;
+A3T5A3T589 contributesTo A3G3 {75;};
+A3G1A3T8 decomposedBy A3T140;
+A3T140 decomposedBy A3T2A3T267;
+A3T140 decomposedBy A3T3A3T359;
+A2A214.A2T3A2G1 contributesTo A3G4A3G481 {25;};
+A3T5A3T589 contributesTo A3G354 {75;};
+A4A423.A4T1 contributesTo A3G4A3G481 {25;};
+}
+actor A1A175 {
+name = "Seminar Management System";
+goal A1G1A1G149 {
+name = "Contain all seminars";
+}
+goal A1G2A1G217 {
+name = "Manage seminars";
+decompositionType = or;
+}
+goal A1G3 {
+name = "Manage attendees";
+}
+A1G2A1G217 decomposedBy A2A214.A2T1A2T183;
+A1G2A1G217 decomposedBy A3A35.A3G1A3T8;
+}
+actor A5A540 {
+name = "Speaker";
+goal A5G1A5G18 {
+name = "Added to a seminar of same area of interest";
+}
+softGoal A5S1A5G2 {
+name = "Prepare presentation faster";
+importance = 100;
+}
+A5G1A5G18 contributesTo A5S1A5G2 {100;};
+}
+actor A2A214 {
+name = "Admin";
+task A2T1A2T183 {
+name = "Add Seminar";
+}
+task A2T2A2T292 {
+name = "Add speakers from outside the managing department";
+}
+task A2T3A2G1 {
+name = "Post an advertisement on social media about the seminar";
+}
+softGoal A2S3A2S399 {
+name = "Diversity of the delivered seminars content";
+}
+softGoal A2S2A2S232 {
+name = "Low cost";
+importance = 100;
+}
+softGoal A2S1 {
+name = "Minimize adminstration duties";
+importance = 50;
+}
+softGoal A2S186 {
+name = "Reduce the administrative tasks.";
+importance = 50;
+}
+A2T2A2T292 contributesTo A2S3A2S399 {75;};
+A2T1A2T183 dependsOn R1;
+A3A35.A3T5A3T589 contributesTo A2S3A2S399 {hurt;};
+}
+actor A4A423 {
+name = "Attendees";
+goal A4G1A4S2 {
+name = "Get reminders before the seminar starts";
+importance = 100;
+}
+softGoal A4S1A4S112 {
+name = "Easy to use web system";
+importance = 100;
+}
+task A4T1 {
+name = "Register in the seminar";
+}
+A1A175.A1G1A1G149 contributesTo A4T1 {25;};
+}
+resource R1 {
+name = "Seminar Request";
+}
+R1 dependsOn A3A35.A3T1;
+}
